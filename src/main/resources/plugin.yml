@@ -1,0 +1,25 @@
+name: Multiblocker
+version: '1.0-SNAPSHOT'
+main: me.ahtism.multiblocker.Multiblocker
+api-version: '1.21'
+commands:
+  save-structure:
+    description: "Save a custom structure to Multiblocker's configuration file"
+    usage: "/save-structure <name> <activator> <ax> <ay> <az> <x1> <y1> <z1> <x2> <y2> <z2>"
+    permission: minecraft.command.op
+    permission-message: "You do not have the permissions required to use this command!"
+  remove-structure:
+    description: "Remove a custom structure from Multiblocker's configuration file"
+    usage: "/remove-structure <structure>"
+    permission: minecraft.command.op
+    permission-message: "You do not have the permissions required to use this command!"
+  add-structure-task:
+    description: "Add a command to a Multiblocker structure to be called upon its activation"
+    usage: "/add-structure-task <structure> <command>"
+    permission: minecraft.command.op
+    permission-message: "You do not have the permissions required to use this command!"
+  reset-structure-tasks:
+    description: "Resets the list of commands in a Multiblocker structure to be called upon its activation"
+    usage: "/reset-structure-tasks <structure>"
+    permission: minecraft.command.op
+    permission-message: "You do not have the permissions required to use this command!"
