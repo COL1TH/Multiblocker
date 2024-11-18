@@ -1,0 +1,6 @@
+name: Multiblocker
+version: '1.0-SNAPSHOT'
+main: me.ahtism.multiblocker.Multiblocker
+description: Paper Test Plugin
+api-version: '1.21'
+bootstrapper: me.ahtism.multiblocker.MultiblockerBootstrap
