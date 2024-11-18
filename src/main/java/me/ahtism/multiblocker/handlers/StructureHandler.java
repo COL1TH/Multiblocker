@@ -2,14 +2,15 @@ package me.ahtism.multiblocker.handlers;
 
 import me.ahtism.multiblocker.Multiblocker;
 import me.ahtism.multiblocker.StructureFile;
-import me.ahtism.multiblocker.StructureItem;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -34,12 +35,6 @@ public class StructureHandler implements Listener {
         World world = event.getPlayer().getWorld();
 
         if (event.getItem() != null) {
-            if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getClickedBlock().getType() == Material.GOLD_BLOCK && event.getItem().getType() == Material.BUNDLE) {
-                StructureItem item = new StructureItem();
-                item.prepare();
-                event.getPlayer().getInventory().addItem(item);
-            }
-
             if (event.getItem().getType() == Material.BUNDLE && !event.getItem().getEnchantments().isEmpty()) {
                 String[] lore = new String[3];
 
@@ -85,6 +80,13 @@ public class StructureHandler implements Listener {
                                 int old = z1;
                                 z1 = z2;
                                 z2 = old;
+                            }
+
+                            for (int level : event.getItem().getEnchantments().values()) {
+                                if ((x2 - x1) * (y2 - y1) * (z2 - z1) > Math.pow(Math.pow(level, 2), 3)) {
+                                    event.getPlayer().sendMessage(Component.text("Your structure is too big!").color(TextColor.color(150, 0, 0)));
+                                    return;
+                                }
                             }
 
                             for (int y = y1; y <= y2; y++) {
@@ -255,8 +257,6 @@ public class StructureHandler implements Listener {
                         isValid = false;
                     }
 
-                    Bukkit.getLogger().info(String.valueOf(isValid));
-
                     if (isValid) {
                         List<String> commands = new ArrayList<>();
 
@@ -285,7 +285,8 @@ public class StructureHandler implements Listener {
                             Bukkit.getLogger().info("Parsing failed: " + e.getMessage());
                         }
 
-                        commands.forEach(command -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "execute positioned " + block.getX() + " " + block.getY() + " " + block.getZ() + " run " + command));
+                        event.getPlayer().getInventory().getItemInMainHand().setAmount(event.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
+                        commands.forEach(command -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "execute positioned " + block.getX() + " " + block.getY() + " " + block.getZ() + " run " + command.replace("@s", event.getPlayer().getName())));
                     }
                 }
             }

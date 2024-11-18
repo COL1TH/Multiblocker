@@ -23,7 +23,7 @@ public class MultiblockerBootstrap implements PluginBootstrap {
                 b -> b.description(Component.text("Architect's Blessing"))
                         .supportedItems(RegistrySet.keySet(RegistryKey.ITEM, ItemTypeKeys.BUNDLE))
                         .anvilCost(1)
-                        .maxLevel(1)
+                        .maxLevel(4)
                         .weight(10)
                         .minimumCost(EnchantmentRegistryEntry.EnchantmentCost.of(1, 1))
                         .maximumCost(EnchantmentRegistryEntry.EnchantmentCost.of(3, 1))
