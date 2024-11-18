@@ -41,6 +41,11 @@ public final class Multiblocker extends JavaPlugin {
             final Commands commands = event.registrar();
             commands.register(
                     literal("multiblocker")
+                            .then(literal("bundle")
+                                    .executes(ctx -> {
+                                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "give " + ctx.getSource().getSender().getName() + " bundle[enchantments={levels:{\"multiblocker:architects_blessing\":4}},lore=['\"Structure: NONE\"','\"Corner 1: NONE\"','\"Corner 2: NONE\"']]");
+                                        return Command.SINGLE_SUCCESS;
+                                    }))
                             .then(literal("command")
                                     .then(literal("set")
                                             .then(argument("structure", StringArgumentType.string())
