@@ -1,0 +1,1 @@
+give @s bundle[enchantments={levels:{"multiblocker:architects_blessing":4}},lore=['"Structure: NONE"','"Corner 1: NONE"','"Corner 2: NONE"']];
