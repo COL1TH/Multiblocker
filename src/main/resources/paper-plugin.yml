@@ -4,3 +4,7 @@ main: me.ahtism.multiblocker.Multiblocker
 description: Paper Test Plugin
 api-version: '1.21'
 bootstrapper: me.ahtism.multiblocker.MultiblockerBootstrap
+permissions:
+  multiblocker.commands:
+    description: "Allows players to execute Multiblocker's commands"
+    default: op

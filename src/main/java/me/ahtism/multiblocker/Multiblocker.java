@@ -8,6 +8,7 @@ import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import me.ahtism.multiblocker.handlers.StructureHandler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.FluidCollisionMode;
 import org.bukkit.Location;
@@ -45,6 +46,11 @@ public final class Multiblocker extends JavaPlugin {
                                             .then(argument("structure", StringArgumentType.string())
                                                     .then(argument("command", StringArgumentType.greedyString())
                                                             .executes(ctx -> {
+                                                                if (!ctx.getSource().getSender().hasPermission("multiblocker.commands")) {
+                                                                    ctx.getSource().getSender().sendMessage(Component.text("You don't have permission to execute this command!").color(TextColor.color(150, 0, 0)));
+                                                                    return Command.SINGLE_SUCCESS;
+                                                                }
+
                                                                 String structure = StringArgumentType.getString(ctx, "structure");
                                                                 String command = StringArgumentType.getString(ctx, "command");
 
@@ -69,6 +75,11 @@ public final class Multiblocker extends JavaPlugin {
                             .then(literal("create-triggerable")
                                     .then(argument("name", StringArgumentType.greedyString())
                                             .executes(ctx -> {
+                                                if (!ctx.getSource().getSender().hasPermission("multiblocker.commands")) {
+                                                    ctx.getSource().getSender().sendMessage(Component.text("You don't have permission to execute this command!").color(TextColor.color(150, 0, 0)));
+                                                    return Command.SINGLE_SUCCESS;
+                                                }
+
                                                 Player player = (Player) ctx.getSource().getSender();
                                                 ItemStack item = player.getInventory().getItemInMainHand();
                                                 Location looking = Objects.requireNonNull(player.getTargetBlockExact(5, FluidCollisionMode.NEVER)).getLocation();
