@@ -1,7 +1,7 @@
 name: Multiblocker
-version: '1.0-SNAPSHOT'
+version: '1.0.0'
 main: me.ahtism.multiblocker.Multiblocker
-description: Paper Test Plugin
+description: A Minecraft plugin built for servers running Paper 1.21.1, adding the ability for players to create their own structures and store them inside special bundles.
 api-version: '1.21'
 bootstrapper: me.ahtism.multiblocker.MultiblockerBootstrap
 permissions:
