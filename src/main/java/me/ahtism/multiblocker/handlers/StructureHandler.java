@@ -13,7 +13,12 @@ import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.ClickType;
+import org.bukkit.event.inventory.InventoryAction;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.io.File;
@@ -82,7 +87,7 @@ public class StructureHandler implements Listener {
                             }
 
                             for (int level : event.getItem().getEnchantments().values()) {
-                                if ((x2 - x1) * (y2 - y1) * (z2 - z1) > Math.pow(level, 6)) {
+                                if ((x2 - x1) * (y2 - y1) * (z2 - z1) > Math.pow(level, 6) * 4) {
                                     event.getPlayer().sendMessage(Component.text("Your structure is too big!").color(TextColor.color(150, 0, 0)));
                                     return;
                                 }
