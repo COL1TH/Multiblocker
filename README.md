@@ -1,9 +1,7 @@
-Multiblocker is a Minecraft plugin built for servers running Paper 1.21.1, adding the ability for players to create their own structures and store them inside special bundles.
+Multiblocker is a Minecraft plugin built for servers running Paper 1.21.1, adding the ability for players to create their own structures and store them inside special bundles. You must configure the plugin to add a way to get this special bundle, which is outlined later in this guide.
 
 # Architect's Blessing
-You must configure the plugin to add a way to get this special bundle, which is outlined later in this guide.
-
-The enchantment comes in four different levels. As the level increases, the number of blocks you can store increases. You can calculate this number by raising the level to the power of 6. Architect's Blessing IV can store 4,096 blocks!
+This new enchantment comes in four different levels. As the level increases, the number of blocks you can store increases. You can calculate this number by raising the level to the power of 6. Architect's Blessing IV can store 4,096 blocks!
 
 # For the Players
 To use the enchanted bundle, right click on any corner of a build, then right click again while sneaking on the opposite corner.
